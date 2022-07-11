@@ -5,14 +5,20 @@ import random
 
 def main():
 	#making log file 
-	log_maker('log_test7.txt')
+	#log_maker('log_test7.txt')
+
 	#subject1()
+
 	#subject(N), N:threshold to regard as server failure
 	#subject2(2)
-	#subject3(N, m, t), m:number of average calculation, t:threshold of ping to regard as server failure
-	#subject3(3, 5, 90)
-	#subject4(3,5,90)
 
+	#subject3(N, m, t), m:number of average calculation, t:threshold of ping to regard as server failure
+	subject3(3, 5, 90)
+
+	#subject4(3,5,90)
+	input()
+
+#subject1
 def subject1():
 	with open("log_test1.txt", 'r', encoding="utf-8") as f:
 		data_list_import = f.readlines()
@@ -71,7 +77,7 @@ def subject1():
 		i = i + 1
 	print('failure count:' + str(failure_count))
 
-
+#subject2
 def subject2(N):
 	with open("log_test2.txt", 'r', encoding="utf-8") as f:
 		data_list_import = f.readlines()
@@ -136,7 +142,7 @@ def subject2(N):
 	
 	print('failure count:' + str(failure_count))
 
-
+#subject3
 def subject3(N,m,t):
 	with open("log_test3.txt", 'r', encoding="utf-8") as f:
 		data_list_import = f.readlines()
@@ -249,7 +255,7 @@ def subject3(N,m,t):
 	
 	print('failure count:' + str(failure_count))
 
-
+#subject4 ##NOT COMPLETED##
 def subject4(N,m,t):
 	#loading log data
 	with open("log_test6.txt", 'r', encoding="utf-8") as f:
@@ -334,8 +340,8 @@ def subject4(N,m,t):
 					k = j+1
 					while k < len(log_table):
 						if log_table[k][PING_RESULT] == '-\n':
+							tmp = 0	#no mean
 							
-
 
 					del(log_table[j])
 					j = j + 1
@@ -392,7 +398,7 @@ def log_maker(output_file_name):
 	#interval of ping test
 	log_interval = datetime.timedelta(seconds=30)
 	#interval of ping request during the ping test
-	ping_interval = datetime.timedelta(seconds=0)
+	ping_interval = datetime.timedelta(seconds=1)
 	#number of ping test
 	log_period_count = 30
 
